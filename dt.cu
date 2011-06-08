@@ -61,16 +61,7 @@ void euclidian_distance_transform(unsigned char* img, float* dist, int w, int h)
     
     dim3 block (BLOCK_SIZE,1,1);
     
-    int gx;
-    if (type == 0)
-    {
-      gx = (w*h+(4*BLOCK_SIZE-1))/(4*BLOCK_SIZE);
-    }
-    else
-    {
-      gx = (w*h+BLOCK_SIZE-1)/BLOCK_SIZE;
-    }
-    
+    int gx = (w*h+BLOCK_SIZE-1)/BLOCK_SIZE;    
     dim3 grid(gx,1);
     
     err = cudaGetLastError();
